@@ -15,27 +15,28 @@ Package.onUse(function (api) {
         'universe:admin@0.1.0',
         'universe:collection@2.0.6',
         'universe:i18n@1.2.2',
-        'universe:modules@0.6.7',
+        'modules@0.5.0-modules.8',
+        'ecmascript@0.4.0-modules.8',
         'universe:ui-react@0.1.0',
         'universe:ui-react-forms@0.1.0',
-        'universe:utilities-react@0.5.6'
+        'universe:utilities-react@1.0.0-beta1'
     ]);
 
 
     api.addFiles([
-        'index.import.jsx',
+        'lib/UniUsers.js',
 
-        'lib/UniUsers.import.js',
+        'localization/en.js',
 
-        'localization/en.import.js',
-
-        'components/AdminView.import.jsx',
-        'components/InsertModal.import.jsx',
-        'components/UpdateModal.import.jsx'
+        'components/AdminView.jsx',
+        'components/InsertModal.jsx',
+        'components/UpdateModal.jsx'
     ]);
 
     api.addFiles([
         'server/methods.js',
         'server/publications.js'
     ], ['server']);
+
+    api.mainModule('index.jsx');
 });

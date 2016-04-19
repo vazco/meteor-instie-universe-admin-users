@@ -8,6 +8,9 @@ Meteor.publish('universe:admin-users', function () {
     return UniUsers.find({
         disabled: {
             $ne: true
+        },
+        blocked: {
+            $ne: true
         }
     });
 });
