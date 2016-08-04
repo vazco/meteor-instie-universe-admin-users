@@ -1,5 +1,5 @@
 import React from 'react';
-import {_i18n as i18n} from "meteor/universe:i18n";
+import {_i18n as i18n} from 'meteor/universe:i18n';
 import {AdminMenu} from 'meteor/universe:admin';
 import {Modals} from 'meteor/universe:ui-react';
 

@@ -22,7 +22,6 @@ Package.onUse(function (api) {
         'universe:utilities-react@1.0.0-beta1'
     ]);
 
-
     api.addFiles([
         'lib/UniUsers.js',
 
@@ -32,6 +31,10 @@ Package.onUse(function (api) {
         'components/InsertModal.jsx',
         'components/UpdateModal.jsx'
     ]);
+
+    api.addFiles([
+        'styles/_tooltips.css'
+    ], 'client');
 
     api.addFiles([
         'server/methods.js',

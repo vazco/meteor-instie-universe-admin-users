@@ -1,7 +1,9 @@
 import {Button, Icon, Modals} from 'meteor/universe:ui-react';
 import {AutorunMixin, SubscriptionMixin} from 'meteor/universe:utilities-react';
 import React from 'react';
-import {_i18n as i18n} from "meteor/universe:i18n";
+import {_i18n} from 'meteor/universe:i18n';
+import {UniUsers} from 'meteor/universe:collection';
+
 
 export const AdminView = React.createClass({
     displayName: 'Admin.Users.View',
@@ -43,16 +45,32 @@ export const AdminView = React.createClass({
                 <td>{address}</td>
                 <td>
                     <div className="right aligned">
-                        <Button className="basic mini icon" onClick={this.showBlock.bind(this, _id)}>
+                        <Button 
+                            data-tooltip="Ban user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showBlock.bind(this, _id)}
+                        >
                             <Icon icon="ban"/>
                         </Button>
-                        <Button className="basic mini icon" onClick={this.showUpdate.bind(this, _id)}>
+                        <Button
+                            data-tooltip="Edit user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showUpdate.bind(this, _id)}
+                        >
                             <Icon icon="edit"/>
                         </Button>
-                        <Button className="basic mini icon" onClick={this.showPassword.bind(this, _id)}>
+                        <Button
+                            data-tooltip="Lock user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showPassword.bind(this, _id)}
+                        >
                             <Icon icon="lock"/>
                         </Button>
-                        <Button className="basic mini icon" onClick={this.showRemove.bind(this, _id)}>
+                        <Button
+                            data-tooltip="Remove user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showRemove.bind(this, _id)}
+                        >
                             <Icon icon="remove"/>
                         </Button>
                     </div>
@@ -61,10 +79,8 @@ export const AdminView = React.createClass({
         );
     },
     showBlock (id) {
-        const user = UniUsers.findOne(id);
-
         Modals.show('ask', {
-            message: i18n.__('admin.users.actions.block'),
+            message: _i18n.__('admin.users.actions.block'),
 
             yesAction () {
                 UniUsers.call('blockUser', id);
@@ -76,7 +92,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: i18n.__('admin.users.actions.remove', {name: user.getName()}),
+            message: _i18n.__('admin.users.actions.remove', {name: user.getName()}),
 
             yesAction () {
                 user.remove();
@@ -88,7 +104,7 @@ export const AdminView = React.createClass({
         const user = UniUsers.findOne(id);
 
         Modals.show('ask', {
-            message: i18n.__('admin.users.actions.password', {name: user.getName()}),
+            message: _i18n.__('admin.users.actions.password', {name: user.getName()}),
 
             yesAction () {
                 user.call('universe:admin-users/resetPassword', user._id);

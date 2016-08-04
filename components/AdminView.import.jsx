@@ -42,15 +42,32 @@ export const AdminView = React.createClass({
                 <td>{address}</td>
                 <td>
                     <div className="right aligned">
-                        <Button className="basic mini icon" onClick={this.showUpdate.bind(this, _id)}>
+                        <Button 
+                            data-tooltip="Ban user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showBlock.bind(this, _id)}
+                        >
+                            <Icon icon="ban"/>
+                        </Button>
+                        <Button
+                            data-tooltip="Edit user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showUpdate.bind(this, _id)}
+                        >
                             <Icon icon="edit"/>
                         </Button>
-                        <Button className="basic mini icon" onClick={this.showPassword.bind(this, _id)}>
+                        <Button
+                            data-tooltip="Lock user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showPassword.bind(this, _id)}
+                        >
                             <Icon icon="lock"/>
                         </Button>
-                        <Button className="basic mini icon" onClick={this.showRemove.bind(this, _id)}>
-                            <Icon icon="remove"/>
-                        </Button>
+                        <Button
+                            data-tooltip="Remove user"
+                            className="basic mini icon tooltip tooltip-left"
+                            onClick={this.showRemove.bind(this, _id)}
+                        >
                     </div>
                 </td>
             </tr>
