@@ -24,6 +24,7 @@ export const AdminView = React.createClass({
                     <thead>
                         <tr>
                             <th>{_i18n.__('admin.users.fields.username')}</th>
+                            <th>{_i18n.__('admin.users.fields.accountType')}</th>
                             <th>{_i18n.__('admin.users.fields.fullname')}</th>
                             <th>{_i18n.__('admin.users.fields.email')}</th>
                             <th></th>
@@ -37,10 +38,11 @@ export const AdminView = React.createClass({
         );
     },
 
-    renderUser ({_id, emails: [{address} = {}] = [], profile: {name} = {}, username}) {
+    renderUser ({_id, emails: [{address} = {}] = [], profile: {name} = {}, username, accountType}) {
         return (
             <tr key={_id}>
                 <td>{username}</td>
+                <td className="center-block">{this.accountTypeIcon({accountType})}</td>
                 <td>{name}</td>
                 <td>{address}</td>
                 <td>
@@ -116,6 +118,13 @@ export const AdminView = React.createClass({
         Modals.show('admin.users.update', {
             user: UniUsers.findOne(id)
         });
+    },
+    //todo Kamil ask Radek how to import files form import directory
+    accountTypeIcon ({accountType = 'Other'}) {
+        if (accountType === 'Instagrammer') {
+            return <span><i className="fa fa-camera-retro" aria-hidden="true"></i></span>;
+        }
+        return <span><i className="fa fa-usd" aria-hidden="true"></i></span>;
     }
 });
 

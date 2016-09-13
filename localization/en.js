@@ -17,10 +17,11 @@ i18n.addTranslation('en', {
             },
 
             fields: {
-                email:     'Email',
-                username:  'Username',
-                fullname:  'Full name',
-                password:  'Password'
+                email:       'Email',
+                username:    'Username',
+                fullname:    'Full name',
+                password:    'Password',
+                accountType: 'Account type'
             },
 
             errors: {
