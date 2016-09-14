@@ -39,10 +39,11 @@ export const AdminView = React.createClass({
     },
 
     renderUser ({_id, emails: [{address} = {}] = [], profile: {name} = {}, username, accountType}) {
+        const mapper = this.props.accountTypeMapper;
         return (
             <tr key={_id}>
                 <td>{username}</td>
-                <td className="center-block">{this.accountTypeIcon({accountType})}</td>
+                <td>{mapper({accountType})}</td>
                 <td>{name}</td>
                 <td>{address}</td>
                 <td>
@@ -118,13 +119,6 @@ export const AdminView = React.createClass({
         Modals.show('admin.users.update', {
             user: UniUsers.findOne(id)
         });
-    },
-    //todo Kamil ask Radek how to import files form import directory
-    accountTypeIcon ({accountType = 'Other'}) {
-        if (accountType === 'Instagrammer') {
-            return <span><i className="fa fa-camera-retro" aria-hidden="true"></i></span>;
-        }
-        return <span><i className="fa fa-usd" aria-hidden="true"></i></span>;
     }
 });
 
